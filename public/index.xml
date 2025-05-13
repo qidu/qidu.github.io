@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agents Ages</title>
+    <link>https://qidu.github.io/</link>
+    <description>Recent content on Agents Ages</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 May 2025 19:16:50 +0800</lastBuildDate>
+    <atom:link href="https://qidu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Starting Point for the Agent</title>
+      <link>https://qidu.github.io/posts/the-starting-point-for-the-agent/</link>
+      <pubDate>Tue, 13 May 2025 19:16:50 +0800</pubDate>
+      <guid>https://qidu.github.io/posts/the-starting-point-for-the-agent/</guid>
+      <description>&lt;p&gt;Building agents with LLM is implemented much more into reality from a cool concept.&#xA;Planning, Tool Calling, Acting, Self-Reflection are the standard 4 steps of the Agent Architecture,&#xA;or the Agentic AI now.&lt;/p&gt;&#xA;&lt;p&gt;We can learn more from the starting point for the Agent in this article:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://lilianweng.github.io/posts/2023-06-23-agent/&#34;&gt;LLM Powered Autonomous Agents&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

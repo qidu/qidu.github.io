@@ -1,0 +1,4 @@
+baseURL = 'https://qidu.github.io/'
+languageCode = 'en-us'
+title = 'Agents Ages'
+theme = 'ananke'
