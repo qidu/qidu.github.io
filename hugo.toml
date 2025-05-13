@@ -1,4 +1,4 @@
-baseURL = 'https://qidu.github.io/'
+baseURL = 'https://qidu.github.io/public'
 languageCode = 'en-us'
 title = 'Agents Ages'
 theme = 'ananke'
