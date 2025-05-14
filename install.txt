@@ -1,0 +1,2 @@
+go install github.com/gohugoio/hugo@latest
+ls ~/go/bin/hugo
