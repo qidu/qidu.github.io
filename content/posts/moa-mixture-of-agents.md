@@ -11,3 +11,4 @@ The proposed architecture contains two main components: the proposers and the ag
 learn more at:
 - [Mixture of Agents (MoA): a better MoE?](https://medium.com/@abdulrahmanrihan/mixture-of-agents-moa-a-better-moe-33683151beec)
 - [Mixture-of-Agents Enhances Large Language Model Capabilities](https://arxiv.org/html/2406.04692v1)
+- [WizardLM: Empowering Large Language Models to Follow Complex Instructions](https://arxiv.org/pdf/2304.12244)
