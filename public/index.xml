@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Agents Ages</title>
-    <link>https://qidu.github.io/public/</link>
+    <link>http://localhost:1313/public/</link>
     <description>Recent content on Agents Ages</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 May 2025 19:16:50 +0800</lastBuildDate>
-    <atom:link href="https://qidu.github.io/public/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 May 2025 10:48:52 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Agent War: Competition With Different Methodology</title>
+      <link>http://localhost:1313/public/posts/the-agent-war-competition-with-different-methodology/</link>
+      <pubDate>Wed, 14 May 2025 10:48:52 +0800</pubDate>
+      <guid>http://localhost:1313/public/posts/the-agent-war-competition-with-different-methodology/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Distinct approaches to implementing Agentic AI&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Microsoft adopts a &amp;ldquo;Universal Platform&amp;rdquo; strategy, aiming to build an &lt;code&gt;AI operating system&lt;/code&gt; that reshapes the software ecosystem by overhauling its underlying architecture. Its Agents act as cross-system intelligent hubs, replacing traditional databases and business logic, shifting from an &amp;ldquo;App Stack&amp;rdquo; to an &amp;ldquo;Agent Stack&amp;rdquo;.&lt;/li&gt;&#xA;&lt;li&gt;Salesforce follows a &amp;ldquo;Vertical Integration&amp;rdquo; approach, embedding Agents deeply into &lt;code&gt;CRM and specific workflows&lt;/code&gt; within its existing SaaS business, enhancing task autonomy without disrupting the current architecture.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;code&gt;Key Differences&lt;/code&gt;:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Starting Point for the Agent</title>
-      <link>https://qidu.github.io/public/posts/the-starting-point-for-the-agent/</link>
+      <link>http://localhost:1313/public/posts/the-starting-point-for-the-agent/</link>
       <pubDate>Tue, 13 May 2025 19:16:50 +0800</pubDate>
-      <guid>https://qidu.github.io/public/posts/the-starting-point-for-the-agent/</guid>
+      <guid>http://localhost:1313/public/posts/the-starting-point-for-the-agent/</guid>
       <description>&lt;p&gt;Building agents with LLM is implemented much more into reality from a cool concept.&#xA;Planning, Tool Calling, Acting, Self-Reflection are the standard 4 steps of the Agent Architecture,&#xA;or the Agentic AI now.&lt;/p&gt;&#xA;&lt;p&gt;We can learn more from the starting point for the Agent in this article:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://lilianweng.github.io/posts/2023-06-23-agent/&#34;&gt;LLM Powered Autonomous Agents&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
