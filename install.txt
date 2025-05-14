@@ -1,2 +1,5 @@
 go install github.com/gohugoio/hugo@latest
 ls ~/go/bin/hugo
+hugo new content content/posts/abc-123-xyz.md
+hugo server -D
+hugo
