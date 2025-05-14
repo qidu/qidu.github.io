@@ -1,6 +1,6 @@
 +++
 date = '2025-05-14T10:48:52+08:00'
-draft = true
+draft = false
 title = 'The Agent War: Competition With Different Methodology'
 +++
 

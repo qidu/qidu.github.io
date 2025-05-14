@@ -6,8 +6,22 @@
     <description>Recent content on Agents Ages</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 May 2025 19:16:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 May 2025 19:34:20 +0800</lastBuildDate>
     <atom:link href="https://qidu.github.io/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MoA: Mixture of Agents</title>
+      <link>https://qidu.github.io/public/posts/moa-mixture-of-agents/</link>
+      <pubDate>Wed, 14 May 2025 19:34:20 +0800</pubDate>
+      <guid>https://qidu.github.io/public/posts/moa-mixture-of-agents/</guid>
+      <description>&lt;p&gt;&lt;code&gt;The proposed MoA architecture&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;The proposed architecture contains two main components: the proposers and the aggregators, both of which are LLMs that excel in their respective aspect of collaboration. for example GPT-4o, Qwen1.5, LLaMA-3 emerged as a versatile model effective in both assisting and aggregating tasks. In contrast, &lt;code&gt;WizardLM&lt;/code&gt; demonstrated excellent performance as a proposer model but struggled to maintain its effectiveness in aggregating responses from other models.&lt;/p&gt;&#xA;&lt;p&gt;learn more at:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Agent War: Competition With Different Methodology</title>
+      <link>https://qidu.github.io/public/posts/the-agent-war-competition-with-different-methodology/</link>
+      <pubDate>Wed, 14 May 2025 10:48:52 +0800</pubDate>
+      <guid>https://qidu.github.io/public/posts/the-agent-war-competition-with-different-methodology/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Distinct approaches to implementing Agentic AI&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Microsoft adopts a &amp;ldquo;Universal Platform&amp;rdquo; strategy, aiming to build an &lt;code&gt;AI operating system&lt;/code&gt; that reshapes the software ecosystem by overhauling its underlying architecture. Its Agents act as cross-system intelligent hubs, replacing traditional databases and business logic, shifting from an &amp;ldquo;App Stack&amp;rdquo; to an &amp;ldquo;Agent Stack&amp;rdquo;.&lt;/li&gt;&#xA;&lt;li&gt;Salesforce follows a &amp;ldquo;Vertical Integration&amp;rdquo; approach, embedding Agents deeply into &lt;code&gt;CRM and specific workflows&lt;/code&gt; within its existing SaaS business, enhancing task autonomy without disrupting the current architecture.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;code&gt;Key Differences&lt;/code&gt;:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The Starting Point for the Agent</title>
       <link>https://qidu.github.io/public/posts/the-starting-point-for-the-agent/</link>
