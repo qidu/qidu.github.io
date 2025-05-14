@@ -2,20 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/public/</loc>
+    <loc>https://qidu.github.io/public/</loc>
     <lastmod>2025-05-14T10:48:52+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/public/posts/</loc>
+    <loc>https://qidu.github.io/public/posts/</loc>
     <lastmod>2025-05-14T10:48:52+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/public/posts/the-agent-war-competition-with-different-methodology/</loc>
-    <lastmod>2025-05-14T10:48:52+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/public/posts/the-starting-point-for-the-agent/</loc>
+    <loc>https://qidu.github.io/public/posts/the-starting-point-for-the-agent/</loc>
     <lastmod>2025-05-13T19:16:50+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/public/categories/</loc>
+    <loc>https://qidu.github.io/public/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/public/tags/</loc>
+    <loc>https://qidu.github.io/public/tags/</loc>
   </url>
 </urlset>
