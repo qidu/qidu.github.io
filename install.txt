@@ -1,5 +1,14 @@
 go install github.com/gohugoio/hugo@latest
 ls ~/go/bin/hugo
+
+brew install go
+
 hugo new content content/posts/abc-123-xyz.md
 hugo server -D
 hugo
+
+git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
+hugo server --minify --theme hugo-book
+
+git submodule init
+git submodule update
