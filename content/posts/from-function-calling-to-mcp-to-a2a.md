@@ -1,6 +1,6 @@
 +++
 date = '2025-05-23T12:10:44+08:00'
-draft = true
+draft = false
 title = 'From Function Calling to MCP, to A2A'
 +++
 
@@ -17,6 +17,7 @@ title = 'From Function Calling to MCP, to A2A'
 > An agent interacts with:
 > * Tools & Resources: typically primitives with well-defined, structured inputs and outputs, perform specific, often stateless, functions.
 > * Agents: Autonomous systems. They can reason, plan, use multiple tools, maintain state over longer interactions, and engage in complex, often multi-turn dialogues to achieve novel or evolving tasks. Then are less predictable than a simple tool.
+> * Agents may colaborate with other agents or call MCP tools, and MCP tools are waiting for calling from agents or LLMs through mcp clients.
 
 [Function Calling](https://platform.openai.com/docs/guides/function-calling)
 > Each Agent or Program should define every functions specificly again and again:

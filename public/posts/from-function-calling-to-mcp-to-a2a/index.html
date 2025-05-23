@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/public/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=public/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -22,12 +22,12 @@ MCP enables some agents to use specific, structured tools to perform specific fu
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
     
 
     
-<link rel="stylesheet" href="/public/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/public/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
 
 
 
@@ -43,10 +43,10 @@ MCP enables some agents to use specific, structured tools to perform specific fu
     
 
     
-      <link rel="canonical" href="http://localhost:1313/public/posts/from-function-calling-to-mcp-to-a2a/">
+      <link rel="canonical" href="https://qidu.github.io/public/posts/from-function-calling-to-mcp-to-a2a/">
     
 
-    <meta property="og:url" content="http://localhost:1313/public/posts/from-function-calling-to-mcp-to-a2a/">
+    <meta property="og:url" content="https://qidu.github.io/public/posts/from-function-calling-to-mcp-to-a2a/">
   <meta property="og:site_name" content="Agents Ages">
   <meta property="og:title" content="From Function Calling to MCP, to A2A">
   <meta property="og:description" content="A2A and MCP
@@ -62,14 +62,16 @@ An A2A Server (a remote agent) could also expose some of its skills as MCP-compa
 An A2A Server (a remote agent) could also expose some of its skills as MCP-compatible resources, especially if those skills are well-defined and can be invoked in a more tool-like. Other agent might “discover” this A2A agent’s specific skill via an MCP-style tool description (from its Agent Card). A2A is about agents partnering on tasks, while MCP is more about agents using capabilities. A2A for inter-agent collaboration and MCP for tool integration. A2A facilitates the higher-level, conversational, and task-oriented interactions between partners. MCP enables some agents to use specific, structured tools to perform specific functions.">
   <meta itemprop="datePublished" content="2025-05-23T12:10:44+08:00">
   <meta itemprop="dateModified" content="2025-05-23T12:10:44+08:00">
-  <meta itemprop="wordCount" content="377">
+  <meta itemprop="wordCount" content="403">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="From Function Calling to MCP, to A2A">
   <meta name="twitter:description" content="A2A and MCP
 An A2A Server (a remote agent) could also expose some of its skills as MCP-compatible resources, especially if those skills are well-defined and can be invoked in a more tool-like. Other agent might “discover” this A2A agent’s specific skill via an MCP-style tool description (from its Agent Card). A2A is about agents partnering on tasks, while MCP is more about agents using capabilities. A2A for inter-agent collaboration and MCP for tool integration. A2A facilitates the higher-level, conversational, and task-oriented interactions between partners. MCP enables some agents to use specific, structured tools to perform specific functions.">
 
+      
+    
 	
-  </head><body class="ma0 avenir bg-near-white development">
+  </head><body class="ma0 avenir bg-near-white production">
 
     
    
@@ -136,6 +138,7 @@ An A2A Server (a remote agent) could also expose some of its skills as MCP-compa
 <ul>
 <li>Tools &amp; Resources: typically primitives with well-defined, structured inputs and outputs, perform specific, often stateless, functions.</li>
 <li>Agents: Autonomous systems. They can reason, plan, use multiple tools, maintain state over longer interactions, and engage in complex, often multi-turn dialogues to achieve novel or evolving tasks. Then are less predictable than a simple tool.</li>
+<li>Agents may colaborate with other agents or call MCP tools, and MCP tools are waiting for calling from agents or LLMs through mcp clients.</li>
 </ul></blockquote>
 <p><a href="https://platform.openai.com/docs/guides/function-calling">Function Calling</a></p>
 <blockquote>
@@ -148,13 +151,14 @@ An A2A Server (a remote agent) could also expose some of its skills as MCP-compa
 <li>User sends function return value to LLM to get more readable responses.
 <img src="https://cdn.openai.com/API/docs/images/function-calling-diagram-steps.png" alt="Function Calling"></li>
 </ol></blockquote>
-<p><a href="https://modelcontextprotocol.io/introduction">MCP Introduction</a></p>
+<p><a href="https://modelcontextprotocol.io/introduction">MCP Introduction</a>
+<img src="https://github.com/modelcontextprotocol/.github/blob/main/profile/assets/light.png" alt="MCP"></p>
 <blockquote>
 <p>Define Tools ( MCP Servers) just once, Calling it anywhere by any users selected LLMs repeatly:</p>
 <ul>
 <li>MCP Hosts: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP tools.</li>
 <li>MCP Clients: Protocol clients that maintain 1:1 connections with servers to retrive each tool context.</li>
-<li>MCP Servers: Lightweight programs that each expose specific tools(functions) definitions and capabilities as standardized Model Context Protocol. They may run locally, or run in Cloud exposing with HTTP/SSE or Streamable HTTP.</li>
+<li>MCP Servers: Lightweight programs that each expose specific tools(functions) definitions and capabilities as standardized Model Context Protocol. They may run locally, or run in Cloud exposing with HTTP/SSE or Streamable HTTP. <a href="https://github.com/modelcontextprotocol/servers">Find servers</a></li>
 <li>Local Data Sources: Your computer’s files, databases, and services that MCP servers can access locally.</li>
 <li>Remote Services: Cloud Services (e.g., PaaS, SaaS and other services APIs) that MCP servers can connect to.</li>
 </ul></blockquote>
@@ -189,7 +193,7 @@ An A2A Server (a remote agent) could also expose some of its skills as MCP-compa
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/public/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://qidu.github.io/public/" >
     &copy;  Agents Ages 2025 
   </a>
     <div><div class="ananke-socials"></div>
