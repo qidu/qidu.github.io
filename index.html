@@ -2,8 +2,39 @@
 <head>
 <title>Agents Ages</title>
 <meta http-equiv="refresh" content="1; url=public/index.html" />
+<script>
+function textLoadingBar(duration = 3000, interval = 100) {
+    const frames = ['|', '/', '-', '\\'];
+    let progress = 0;
+    const maxProgress = 100;
+    const startTime = Date.now();
+
+    const timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        progress = Math.min((elapsed / duration) * maxProgress, maxProgress);
+
+        const frame = frames[Math.round(elapsed / interval) % frames.length];
+
+        const barLength = 20;
+        const filled = Math.round(barLength * (progress / maxProgress));
+        const empty = barLength - filled;
+            const bar = '' + '='.repeat(filled) + ' '.repeat(empty) + ''
+
+        document.getElementById("target").textContent = `${bar} ${progress.toFixed(1)}%`;
+
+        // 完成时清除定时器
+        if (progress >= maxProgress) {
+            clearInterval(timer);
+            document.write('done');
+        }
+    }, interval);
+}
+
+textLoadingBar(3000, 50);
+
+</script>
 </head>
 <body style="background-color: #000; color: #fff;"> 
-        <h3> loading ... </h3> 
+        <div id="target">...</div>
 </body>
 </html>
