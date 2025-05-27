@@ -6,8 +6,15 @@
     <description>Recent content on Agents Ages</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 May 2025 12:10:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 May 2025 22:44:03 +0800</lastBuildDate>
     <atom:link href="https://qidu.github.io/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What Is an Agent?</title>
+      <link>https://qidu.github.io/public/posts/what-is-an-agent/</link>
+      <pubDate>Tue, 27 May 2025 22:44:03 +0800</pubDate>
+      <guid>https://qidu.github.io/public/posts/what-is-an-agent/</guid>
+      <description>&lt;p&gt;Agent is&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;a “term so overused to mean so many different things that&lt;/li&gt;&#xA;&lt;li&gt;it starts to lose any real meaning in conversation&lt;/li&gt;&#xA;&lt;li&gt;because everyone is confidently using it to refer to different things”&lt;/li&gt;&#xA;&lt;/ul&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;in 2025.&lt;/p&gt;&#xA;&lt;p&gt;What we talk about when we talk about Agent?&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;When we talking about AI agents with someone and are either&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;(a) not really sure what an agent is and how it is different from the generative AI capabilities we’ve seen so far,&lt;/li&gt;&#xA;&lt;li&gt;(b) not really sure the person using the term knows what an agent is, or&lt;/li&gt;&#xA;&lt;li&gt;(c) might have thought that they knew what an agent is until reading the first sentence of this article.&lt;/li&gt;&#xA;&lt;/ul&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;We could refer to &lt;a href=&#34;https://windsurf.com/blog/what-is-an-agent&#34;&gt;Windsurf&amp;rsquo;s Agent&lt;/a&gt; article to make some theoretical concepts more tractable.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>From Function Calling to MCP, to A2A</title>
       <link>https://qidu.github.io/public/posts/from-function-calling-to-mcp-to-a2a/</link>
