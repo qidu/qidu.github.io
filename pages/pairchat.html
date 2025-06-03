@@ -496,63 +496,74 @@
         }
         
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-                padding: 0.8rem;
+            .container {
+                padding-top: 60px; /* 为头部留出空间 */
             }
-            
-            h1 {
-                font-size: 1.2rem;
+        
+            .chat-container {
+                padding: 0.5rem;
+                gap: 0.5rem;
             }
-            
-            .settings {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
+
             .chat-box {
                 flex-direction: column;
+                height: calc(100vh - 180px); /* 调整高度计算方式 */
+                overflow-y: auto; /* 允许滚动 */
             }
             
             .model-response {
-                min-height: 300px;
+                min-height: auto;
+                max-height: 50vh; /* 限制最大高度 */
+                flex: none; /* 取消flex增长 */
             }
             
             .input-area {
-                flex-direction: column;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 0.8rem;
+                background: white;
+                border-top: 1px solid var(--border-color);
+                z-index: 20;
             }
             
-            button {
+            .toggle-history {
+                top: 75px; /* 调整位置避免与头部重叠 */
+            }
+        
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 30;
+            }
+        
+            .settings {
                 width: 100%;
-                padding: 0.8rem;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
             }
         }
         
         @media (max-width: 576px) {
-            .settings {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.6rem;
+            .chat-box {
+                height: calc(100vh - 220px); /* 更小的屏幕调整高度 */
             }
-            
-            .settings-group {
-                width: 100%;
+        
+            .input-area {
+                flex-direction: row;
             }
-            
-            input[type="password"], input[type="text"] {
-                width: 100%;
+        
+            textarea {
+                min-height: 50px;
+                max-height: 120px;
             }
-            
-            select {
-                width: 100%;
-            }
-            
-            .refresh-models {
-                margin-left: 0;
-                width: 100%;
-                text-align: center;
+        
+            button {
+                padding: 0.6rem 1rem;
             }
         }
     </style>
