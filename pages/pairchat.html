@@ -476,95 +476,79 @@
             background: #c0392b;
         }
         
-        /* 移动端适配 */
-        @media (max-width: 992px) {
+        /* 移动端设置面板样式 */
+        .mobile-settings {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 25;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .mobile-settings.open {
+            display: block;
+        }
+        
+        .toggle-settings {
+            position: fixed;
+            bottom: 80px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+                
+        @media (max-width: 768px) {
+            .input-area {
+                bottom: 60px; /* 为设置按钮留出空间 */
+            }
+            
             .settings {
-                gap: 0.5rem;
+                display: none; /* 隐藏桌面端设置 */
+            }
+            
+            .mobile-settings {
+                display: none;
+            }
+            
+            .mobile-settings.open {
+                display: block;
             }
             
             .settings-group {
-                padding: 0.3rem 0.6rem;
+                margin-bottom: 10px;
             }
             
-            input[type="password"], input[type="text"] {
-                width: 140px;
+            .settings-group label {
+                display: block;
+                margin-bottom: 5px;
             }
             
-            select {
-                min-width: 100px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding-top: 60px; /* 为头部留出空间 */
-            }
-        
-            .chat-container {
-                padding: 0.5rem;
-                gap: 0.5rem;
-            }
-
-            .chat-box {
-                flex-direction: column;
-                height: calc(100vh - 180px); /* 调整高度计算方式 */
-                overflow-y: auto; /* 允许滚动 */
-            }
-            
-            .model-response {
-                min-height: auto;
-                max-height: 50vh; /* 限制最大高度 */
-                flex: none; /* 取消flex增长 */
-            }
-            
-            .input-area {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: 0.8rem;
-                background: white;
-                border-top: 1px solid var(--border-color);
-                z-index: 20;
-            }
-            
-            .toggle-history {
-                top: 75px; /* 调整位置避免与头部重叠 */
-            }
-        
-            header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 30;
-            }
-        
-            .settings {
+            input[type="password"], input[type="text"], select {
                 width: 100%;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding-bottom: 10px;
             }
         }
         
         @media (max-width: 576px) {
-            .chat-box {
-                height: calc(100vh - 220px); /* 更小的屏幕调整高度 */
-            }
-        
             .input-area {
-                flex-direction: row;
-            }
-        
-            textarea {
-                min-height: 50px;
-                max-height: 120px;
-            }
-        
-            button {
-                padding: 0.6rem 1rem;
-            }
+                bottom: 60px;
+            }                
         }
     </style>
 </head>
@@ -657,7 +641,7 @@
             </div>
         </div>
     </div>
-    <header>
+    <!-- header>
         <div class="settings">
             <div class="settings-group">
                 <label for="baseUrl">API地址:</label>
@@ -687,26 +671,56 @@
                 <i class="fas fa-sync-alt"></i> 刷新模型
             </button>
         </div>
-    </header>
+    </header -->
+
+    <!-- 添加移动端设置按钮和面板 -->
+    <button class="toggle-settings" id="toggleSettings">
+        <i class="fas fa-cog"></i>
+    </button>
+    
+    <div class="mobile-settings" id="mobileSettings">
+        <div class="settings-group">
+            <label for="mobileBaseUrl">API地址:</label>
+            <input type="text" id="mobileBaseUrl" placeholder="API Base URL" value="https://api.qnaigc.com">
+        </div>
+        
+        <div class="settings-group">
+            <label for="mobileApiKey">API Key:</label>
+            <input type="password" id="mobileApiKey" placeholder="输入API Key">
+        </div>
+        
+        <div class="settings-group">
+            <label for="mobileModel1">模型1:</label>
+            <select id="mobileModel1" disabled>
+                <option value="">加载模型中...</option>
+            </select>
+        </div>
+        
+        <div class="settings-group">
+            <label for="mobileModel2">模型2:</label>
+            <select id="mobileModel2" disabled>
+                <option value="">加载模型中...</option>
+            </select>
+        </div>
+        
+        <button id="mobileRefreshModels" class="refresh-models" title="刷新模型列表" style="width: 100%; margin-top: 10px;">
+            <i class="fas fa-sync-alt"></i> 刷新模型
+        </button>
+    </div>
+
 
     <!-- 引入Marked.js用于Markdown渲染 -->
     <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const baseUrlInput = document.getElementById('baseUrl');
-            const apiKeyInput = document.getElementById('apiKey');
-            const model1Select = document.getElementById('model1');
-            const model2Select = document.getElementById('model2');
-            const model1Name = document.getElementById('model1-name');
-            const model2Name = document.getElementById('model2-name');
+
             const model1Messages = document.getElementById('model1-messages');
             const model2Messages = document.getElementById('model2-messages');
             const model1Status = document.getElementById('model1-status');
             const model2Status = document.getElementById('model2-status');
             const userInput = document.getElementById('userInput');
             const sendButton = document.getElementById('sendButton');
-            const refreshModelsBtn = document.getElementById('refreshModels');
             const historyPanel = document.getElementById('historyPanel');
             const historyList = document.getElementById('historyList');
             const toggleHistory = document.getElementById('toggleHistory');
@@ -717,11 +731,7 @@
             let conversationHistory = [];
             let conversations = [];
             let currentConversationId = null;
-            
-            // 初始化
-            loadModels();
-            loadConversations();
-            
+
             // 切换历史面板
             toggleHistory.addEventListener('click', () => {
                 historyPanel.classList.toggle('open');
@@ -750,26 +760,90 @@
                     return code;
                 }
             });
+
+
+            // 新增移动端设置相关元素
+            const toggleSettings = document.getElementById('toggleSettings');
+            const mobileSettings = document.getElementById('mobileSettings');
+            const mobileBaseUrl = document.getElementById('mobileBaseUrl');
+            const mobileApiKey = document.getElementById('mobileApiKey');
+            const mobileModel1 = document.getElementById('mobileModel1');
+            const mobileModel2 = document.getElementById('mobileModel2');
+            const mobileRefreshModels = document.getElementById('mobileRefreshModels');
             
+            const model1Select = mobileModel1;
+            const model2Select = mobileModel2;
+            const model1Name = document.getElementById('model1-name');
+            const model2Name = document.getElementById('model2-name');
+
+            // 桌面端设置元素
+            const baseUrlInput = document.getElementById('baseUrl');
+            const apiKeyInput = document.getElementById('apiKey');
+            const refreshModelsBtn = document.getElementById('refreshModels');
+            
+            // 同步移动端和桌面端设置
+            function syncSettings() {
+            //    baseUrlInput.value = mobileBaseUrl.value;
+            //    apiKeyInput.value = mobileApiKey.value;
+            //    model1Select.value = mobileModel1.value;
+            //    model2Select.value = mobileModel2.value;
+                updateUIState();
+            }
+            
+            // 同步桌面端到移动端
+            function syncToMobile() {
+            //    mobileBaseUrl.value = baseUrlInput.value;
+            //    mobileApiKey.value = apiKeyInput.value;
+            //    mobileModel1.value = model1Select.value;
+            //    mobileModel2.value = model2Select.value;
+            }
+            
+            // 切换设置面板
+            toggleSettings.addEventListener('click', () => {
+                mobileSettings.classList.toggle('open');
+                // syncToMobile(); // 确保打开时同步最新设置
+            });
+            
+            // 移动端设置变化时同步到桌面端
+            mobileBaseUrl.addEventListener('input', syncSettings);
+            mobileApiKey.addEventListener('input', syncSettings);
+            mobileModel1.addEventListener('change', syncSettings);
+            mobileModel2.addEventListener('change', syncSettings);
+            
+            // 移动端刷新模型
+            mobileRefreshModels.addEventListener('click', () => {
+                loadModels();
+            });
+ 
             // 刷新模型列表
-            refreshModelsBtn.addEventListener('click', loadModels);
+            // refreshModelsBtn.addEventListener('click', loadModels);
+
+            // 初始化
+            loadModels();
+            loadConversations();
+
             
             // 从API获取模型列表
             async function loadModels() {
                 try {
-                    model1Select.disabled = true;
-                    model2Select.disabled = true;
-                    model1Select.innerHTML = '<option value="">加载模型中...</option>';
-                    model2Select.innerHTML = '<option value="">加载模型中...</option>';
+                    // model1Select.disabled = true;
+                    // model2Select.disabled = true;
+                    mobileModel1.disabled = true;
+                    mobileModel2.disabled = true;
                     
-                    const baseUrl = baseUrlInput.value.trim();
+                    // model1Select.innerHTML = '<option value="">加载模型中...</option>';
+                    // model2Select.innerHTML = '<option value="">加载模型中...</option>';
+                    mobileModel1.innerHTML = '<option value="">加载模型中...</option>';
+                    mobileModel2.innerHTML = '<option value="">加载模型中...</option>';
+                    
+                    const baseUrl = mobileBaseUrl.value.trim();
                     if (!baseUrl) {
                         throw new Error('请填写API地址');
                     }
                     
                     const response = await fetch(`${baseUrl}/v1/models`, {
                         headers: {
-                            'Authorization': apiKeyInput.value ? `Bearer ${apiKeyInput.value}` : ''
+                            'Authorization': mobileApiKey.value ? `Bearer ${mobileApiKey.value}` : ''
                         }
                     });
                     
@@ -789,11 +863,65 @@
                     updateStatus(model1Status, 'error', '加载失败');
                     updateStatus(model2Status, 'error', '加载失败');
                     alert('加载模型列表失败: ' + error.message);
-                    model1Select.innerHTML = '<option value="">加载失败</option>';
-                    model2Select.innerHTML = '<option value="">加载失败</option>';
+                    
+                    // model1Select.innerHTML = '<option value="">加载失败</option>';
+                    // model2Select.innerHTML = '<option value="">加载失败</option>';
+                    mobileModel1.innerHTML = '<option value="">加载失败</option>';
+                    mobileModel2.innerHTML = '<option value="">加载失败</option>';
                 } finally {
                     updateUIState();
                 }
+            }
+
+            // 修改populateModelSelects函数以更新移动端下拉框
+            function populateModelSelects() {
+                // model1Select.innerHTML = '';
+                // model2Select.innerHTML = '';
+                mobileModel1.innerHTML = '';
+                mobileModel2.innerHTML = '';
+                
+                if (availableModels.length === 0) {
+                //    model1Select.innerHTML = '<option value="">无可用模型</option>';
+                //    model2Select.innerHTML = '<option value="">无可用模型</option>';
+                    mobileModel1.innerHTML = '<option value="">无可用模型m</option>';
+                    mobileModel2.innerHTML = '<option value="">无可用模型m</option>';
+                    return;
+                }
+                
+                // 为每个模型创建选项
+                availableModels.forEach(model => {
+                    const option1 = document.createElement('option');
+                    option1.value = model.id;
+                    option1.textContent = getModelDisplayName(model.id);
+                    // model1Select.appendChild(option1);
+                    
+                    const option2 = document.createElement('option');
+                    option2.value = model.id;
+                    option2.textContent = getModelDisplayName(model.id);
+                    // model2Select.appendChild(option2);
+                    
+                    const mobileOption1 = document.createElement('option');
+                    mobileOption1.value = model.id;
+                    mobileOption1.textContent = getModelDisplayName(model.id);
+                    mobileModel1.appendChild(mobileOption1);
+                    
+                    const mobileOption2 = document.createElement('option');
+                    mobileOption2.value = model.id;
+                    mobileOption2.textContent = getModelDisplayName(model.id);
+                    mobileModel2.appendChild(mobileOption2);
+                });
+                
+                // 设置默认选择
+                if (availableModels.length >= 1) {
+                //    model1Select.value = availableModels[0].id;
+                    mobileModel1.value = availableModels[0].id;
+                }
+                if (availableModels.length >= 2) {
+                //    model2Select.value = availableModels[1].id;
+                    mobileModel2.value = availableModels[1].id;
+                }
+                
+                updateModelNames();
             }
             
             // 更新状态指示器
@@ -829,7 +957,7 @@
             }
             
             // 填充模型选择下拉框
-            function populateModelSelects() {
+            function populateModelSelects2() {
                 model1Select.innerHTML = '';
                 model2Select.innerHTML = '';
                 
@@ -874,28 +1002,30 @@
                 return model ? model.id : modelId;
             }
             
-            model1Select.addEventListener('change', updateModelNames);
-            model2Select.addEventListener('change', updateModelNames);
+            // model1Select.addEventListener('change', updateModelNames);
+            // model2Select.addEventListener('change', updateModelNames);
             
             // 根据当前状态更新UI
             function updateUIState() {
                 const hasModels = availableModels.length > 0;
-                const hasApiKey = apiKeyInput.value.trim() !== '';
-                const hasSelectedModels = model1Select.value && model2Select.value;
+                const hasApiKey = mobileApiKey.value.trim() !== '';
+                const hasSelectedModels = mobileModel1.value && mobileModel2.value;
                 const hasInput = userInput.value.trim() !== '';
                 
-                model1Select.disabled = !hasModels;
-                model2Select.disabled = !hasModels;
+                // model1Select.disabled = !hasModels;
+                // model2Select.disabled = !hasModels;
+                mobileModel1.disabled = !hasModels;
+                mobileModel2.disabled = !hasModels;
                 userInput.disabled = !(hasApiKey && hasSelectedModels);
                 sendButton.disabled = !(hasApiKey && hasSelectedModels && hasInput);
                 
                 updateModelNames();
             }
             
-            baseUrlInput.addEventListener('input', updateUIState);
-            apiKeyInput.addEventListener('input', updateUIState);
-            model1Select.addEventListener('change', updateUIState);
-            model2Select.addEventListener('change', updateUIState);
+            // baseUrlInput.addEventListener('input', updateUIState);
+            // apiKeyInput.addEventListener('input', updateUIState);
+            // model1Select.addEventListener('change', updateUIState);
+            // model2Select.addEventListener('change', updateUIState);
             
             // 自动调整文本框高度
             userInput.addEventListener('input', function() {
@@ -938,13 +1068,13 @@
                 const message = userInput.value.trim();
                 if (!message) return;
                 
-                const apiKey = apiKeyInput.value.trim();
+                const apiKey = mobileApiKey.value.trim();
                 if (!apiKey) {
                     alert('请输入API Key');
                     return;
                 }
                 
-                const baseUrl = baseUrlInput.value.trim();
+                const baseUrl = mobileBaseUrl.value.trim();
                 if (!baseUrl) {
                     alert('请输入API地址');
                     return;
