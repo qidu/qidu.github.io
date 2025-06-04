@@ -1142,7 +1142,7 @@
                 }
             }
 
-            // 主处理函数
+            // 主处理函数,并行请求，异步响应
             async function handleParallelChats(baseUrl, apiKey, model1Select, model2Select, model1Status, model2Status, currentConv, [...conversationHistory]) {
                 const startTime = Date.now();
                 const processedModels = new Set();
