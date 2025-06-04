@@ -439,7 +439,7 @@
         .toggle-history {
             position: absolute;
             top: 15px;
-            left: 15px;
+            right: 15px;
             background: var(--primary-color);
             color: white;
             border: none;
@@ -568,41 +568,12 @@
         <button class="clear-history" id="clearHistory">清空历史记录</button>
     </div>
     
-    <button class="toggle-history" id="toggleHistory">
-        <i class="fas fa-history"></i>
-    </button>
-    
     <header>
         <h1><i class="fas fa-robot"></i> 多模型聊天对话</h1>
-        <!-- div class="settings">
-            <div class="settings-group">
-                <label for="baseUrl">API地址:</label>
-                <input type="text" id="baseUrl" placeholder="API Base URL" value="https://api.qnaigc.com">
-            </div>
-            
-            <div class="settings-group">
-                <label for="apiKey">API Key:</label>
-                <input type="password" id="apiKey" placeholder="输入API Key">
-            </div>
-            
-            <div class="settings-group">
-                <label for="model1">模型1:</label>
-                <select id="model1" disabled>
-                    <option value="">加载模型中...</option>
-                </select>
-            </div>
-            
-            <div class="settings-group">
-                <label for="model2">模型2:</label>
-                <select id="model2" disabled>
-                    <option value="">加载模型中...</option>
-                </select>
-            </div>
-            
-            <button id="refreshModels" class="refresh-models" title="刷新模型列表">
-                <i class="fas fa-sync-alt"></i> 刷新模型
-            </button>
-        </div -->
+
+        <button class="toggle-history" id="toggleHistory">
+            <i class="fas fa-history"></i>
+        </button>
     </header>
     
     <div class="container">
