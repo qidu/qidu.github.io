@@ -813,8 +813,19 @@
             // 初始化
             loadModels();
             loadConversations();
-
+            loadCookies();
             
+            async function loadCookies() {
+                var apiKey = getCookie('apiKey');
+                if (apiKey != null) {
+                    mobileApiKey.value = apiKey;
+                }
+                var baseUrl = getCookie('baseUrl');
+                if (baseUrl != null) {
+                    mobileBaseUrl.value = baseUrl;
+                }
+            }
+
             // 从API获取模型列表
             async function loadModels() {
                 try {
@@ -993,6 +1004,25 @@
                 renderConversations();
             }
             
+            // 设置 Cookie
+            function setCookie(name, value, days) {
+                const expires = new Date();
+                expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+                document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+            }
+
+            // 获取 Cookie
+            function getCookie(name) {
+                const cookies = document.cookie.split(';');
+                for (const cookie of cookies) {
+                    const [cookieName, cookieValue] = cookie.trim().split('=');
+                    if (cookieName === name) {
+                        return cookieValue;
+                    }
+                }
+                return null;
+            }
+
             // 发送消息
             async function sendMessage() {
                 const message = userInput.value.trim();
@@ -1014,6 +1044,11 @@
                     alert('请选择两个模型进行比较');
                     return;
                 }
+
+                setCookie('apiKey', apiKey, 7);
+                setCookie('baseUrl', baseUrl, 7);
+                setCookie('model1Select', model1Select.value, 7);
+                setCookie('model2Select', model2Select.value, 7);
                 
                 // 如果是新对话，创建对话记录
                 if (conversationHistory.length === 0) {
