@@ -813,9 +813,9 @@
             // 初始化
             loadModels();
             loadConversations();
-            loadCookies();
+
             
-            async function loadCookies() {
+            function loadCookies() {
                 var apiKey = getCookie('apiKey');
                 if (apiKey != null) {
                     mobileApiKey.value = apiKey;
@@ -862,6 +862,8 @@
                     availableModels = data.data || [];
                     
                     populateModelSelects();
+                    loadCookies();
+
                     updateStatus(model1Status, 'idle', 'Ready');
                     updateStatus(model2Status, 'idle', 'Ready');
                     
