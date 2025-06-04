@@ -824,6 +824,14 @@
                 if (baseUrl != null) {
                     mobileBaseUrl.value = baseUrl;
                 }
+                var model1 = getCookie('model1');
+                if (model1 != null) {
+                    mobileModel1.value = model1;
+                }
+                var model2 = getCookie('model2');
+                if (model2 != null) {
+                    mobileModel2.value = model2;
+                }
             }
 
             // 从API获取模型列表
@@ -1047,8 +1055,8 @@
 
                 setCookie('apiKey', apiKey, 7);
                 setCookie('baseUrl', baseUrl, 7);
-                setCookie('model1Select', model1Select.value, 7);
-                setCookie('model2Select', model2Select.value, 7);
+                setCookie('model1', model1Select.value, 7);
+                setCookie('model2', model2Select.value, 7);
                 
                 // 如果是新对话，创建对话记录
                 if (conversationHistory.length === 0) {
