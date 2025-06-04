@@ -623,7 +623,7 @@
     <div class="mobile-settings" id="mobileSettings">
         <div class="settings-group">
             <label for="mobileBaseUrl">BaseURL:</label>
-            <input type="text" id="mobileBaseUrl" placeholder="API Base URL" value="https://api.qnaigc.com">
+            <input type="text" id="mobileBaseUrl" placeholder="API Base URL" value="https://api.qnaigc.com/v1">
         </div>
         
         <div class="settings-group">
@@ -780,15 +780,15 @@
                     mobileModel1.disabled = true;
                     mobileModel2.disabled = true;
                     
-                    mobileModel1.innerHTML = '<option value="">加载模型中...</option>';
-                    mobileModel2.innerHTML = '<option value="">加载模型中...</option>';
+                    mobileModel1.innerHTML = '<option value="">loading models...</option>';
+                    mobileModel2.innerHTML = '<option value="">loading models...</option>';
                     
                     const baseUrl = mobileBaseUrl.value.trim();
                     if (!baseUrl) {
                         throw new Error('请填写API地址');
                     }
                     
-                    const response = await fetch(`${baseUrl}/v1/models`, {
+                    const response = await fetch(`${baseUrl}/models`, {
                         headers: {
                             'Authorization': mobileApiKey.value ? `Bearer ${mobileApiKey.value}` : ''
                         }
@@ -1041,7 +1041,7 @@
                 
                 try {
                     // 同时向两个模型发送请求
-                    const [response1, response2] = await Promise.all([
+                    /* const [response1, response2] = await Promise.all([
                         chatWithModel(baseUrl, apiKey, model1Select.value, [...conversationHistory]),
                         chatWithModel(baseUrl, apiKey, model2Select.value, [...conversationHistory])
                     ]);
@@ -1082,10 +1082,16 @@
                             currentConv.messages.push(assistantMessage2);
                             saveConversations();
                         }
-                    }
+                    } */
+
+                    handleParallelChats(baseUrl, apiKey, model1Select, model2Select, model1Status, model2Status, currentConv, [...conversationHistory]).then(results => {
+
+                        console.log('Final results:', results);
+                    }).catch(error => {
+                        console.error('Error in parallel chat handling:', error);
+                    });
                     
-                    updateStatus(model1Status, 'success', 'Done');
-                    updateStatus(model2Status, 'success', 'Done');
+
                     
                 } catch (error) {
                     console.error('Error:', error);
@@ -1107,7 +1113,7 @@
                         updateStatus(model2Status, 'thinking');
                     }
                     
-                    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
+                    const response = await fetch(`${baseUrl}/chat/completions`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -1133,6 +1139,146 @@
                         updateStatus(model2Status, 'error', error.message);
                     }
                     throw error;
+                }
+            }
+
+            // 主处理函数
+            async function handleParallelChats(baseUrl, apiKey, model1Select, model2Select, model1Status, model2Status, currentConv, [...conversationHistory]) {
+                const startTime = Date.now();
+                const processedModels = new Set();
+            
+                // 创建两个并行请求
+                const request1 = chatWithModelT(baseUrl, apiKey, model1Select.value, [...conversationHistory]);
+                const request2 = chatWithModelT(baseUrl, apiKey, model2Select.value, [...conversationHistory]);
+            
+                // 处理单个响应的函数
+                const processResponse = ({ data, elapsedTime, model, error }) => {
+                    // console.log('==== ' + currentConv.id + ' ===' + model + ' takes ' + elapsedTime);
+                    if (error) {
+                        console.error(`Model ${model} failed after ${elapsedTime}s:`, error);
+                        
+                        const errorMessage = {
+                            role: 'assistant',
+                            content: `Error: ${error.message}`,
+                            model: model,
+                            chatpos: model === model1Select.value? 0 : 1,
+                            timestamp: new Date().toLocaleTimeString(),
+                            responseTime: `${elapsedTime}s`,
+                            isError: true
+                        };
+                        
+                        addMessageToChat(model === model1Select.value ? model1Messages : model2Messages, errorMessage);
+                        conversationHistory.push(errorMessage);
+                        
+                        if (currentConv) {
+                            currentConv.messages.push(errorMessage);
+                            saveConversations();
+                        }
+                        
+                        updateStatus(model === model1Select.value ? model1Status : model2Status, 'error', 'Error');
+
+                        processedModels.add(model);
+                        return;
+                    }
+            
+                    if (data.choices && data.choices[0]) {
+                        const assistantMessage = {
+                            role: 'assistant',
+                            content: data.choices[0].message.content,
+                            reasoning_content: data.choices[0].message.reasoning_content,
+                            model: model,
+                            chatpos: model === model1Select.value? 0 : 1,
+                            timestamp: new Date().toLocaleTimeString(),
+                            responseTime: `${elapsedTime}s`
+                        };
+                        // console.log(assistantMessage.content);
+                        
+                        const messagesContainer = model === model1Select.value ? model1Messages : model2Messages;
+                        addMessageToChat(messagesContainer, assistantMessage);
+                        conversationHistory.push(assistantMessage);
+                        
+                        if (currentConv) {
+                            currentConv.messages.push(assistantMessage);
+                            saveConversations();
+                        }
+
+                        updateStatus(model === model1Select.value ? model1Status : model2Status, 'success', 'Done');
+                        
+                        // console.log(`Model ${model} responded in ${elapsedTime} seconds`);
+                        processedModels.add(model);
+                    }
+                };
+            
+                // 使用race处理先完成的请求
+                while (processedModels.size < 2) {
+                    try {
+                        const result = await Promise.race([
+                            processedModels.has(model1Select.value) ? new Promise(() => {}) : request1,
+                            processedModels.has(model2Select.value) ? new Promise(() => {}) : request2
+                        ]);
+                        
+                        if (result) {
+                            processResponse(result);
+                        }
+                    } catch (error) {
+                        // console.error('Unexpected error in race handling:', error);
+                        // 确保不会卡在循环中
+                        if (!processedModels.has(model1Select.value)) processedModels.add(model1Select.value);
+                        if (!processedModels.has(model2Select.value)) processedModels.add(model2Select.value);
+                    }
+                }
+            
+                // 计算总耗时
+                const totalTime = Math.round((Date.now() - startTime) / 1000);
+                // console.log(`Both responses processed. Total time: ${totalTime}s`);
+                
+                // 可选：返回两个模型的结果
+                const [finalResult1, finalResult2] = await Promise.all([request1, request2]);
+                return {
+                    model1: finalResult1,
+                    model2: finalResult2,
+                    totalTime: `${totalTime}s`
+                };
+            }
+
+            async function chatWithModelT(baseUrl, apiKey, model, messages) {
+                const startTime = Date.now();
+                try {
+                    if (model === model1Select.value) {
+                        updateStatus(model1Status, 'Thinking');
+                    } else {
+                        updateStatus(model2Status, 'Thinking');
+                    }
+
+                    const response = await fetch(`${baseUrl}/chat/completions`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: model,
+                            messages: messages,
+                            stream: false
+                        })
+                    });
+        
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error?.message || `API请求失败: ${response.status} ${response.statusText}`);
+                    }
+        
+                    const data = await response.json();
+                    const elapsedTime = Math.round((Date.now() - startTime) / 1000);
+                    return { data, elapsedTime, model };
+                } catch (error) {
+                    if (model === model1Select.value) {
+                        updateStatus(model1Status, 'error', error.message);
+                    } else {
+                        updateStatus(model2Status, 'error', error.message);
+                    }
+                    const elapsedTime = Math.round((Date.now() - startTime) / 1000);
+                    return { error, elapsedTime, model };
                 }
             }
             
@@ -1168,7 +1314,12 @@
                 // 添加时间戳
                 const timeDiv = document.createElement('div');
                 timeDiv.className = 'timestamp';
-                timeDiv.textContent = message.timestamp;
+                if (message.role === 'assistant') {
+                    timeDiv.textContent = message.timestamp + ' (' + message.responseTime + ')';
+                }
+                else {
+                    timeDiv.textContent = message.timestamp;
+                }
                 contentDiv.appendChild(timeDiv);
                 
                 messageDiv.appendChild(contentDiv);
@@ -1239,7 +1390,18 @@
                 
                 // 重新渲染消息
                 conversation.messages.forEach(msg => {
-                    addMessageToBothChats(msg);
+                //    addMessageToBothChats(msg);
+                    if (msg.chatpos == 0) {
+                        addMessageToChat(model1Messages, msg);
+                        model1Name.textContent = msg.model;
+                        model1Select.value = msg.model;
+
+                    }
+                    else {
+                        addMessageToChat(model2Messages, msg);
+                        model2Name.textContent = msg.model;
+                        model2Select.value = msg.model;
+                    }
                 });
                 
                 // 更新模型名称
