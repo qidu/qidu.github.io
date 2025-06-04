@@ -790,6 +790,13 @@
             // 切换设置面板
             toggleSettings.addEventListener('click', () => {
                 mobileSettings.classList.toggle('open');
+                const toggleBtn = document.getElementById('toggleSettings');
+                if (toggleBtn.innerHTML === 'x') {
+                    toggleBtn.innerHTML = '<i class="fas fa-cog"></i>';
+                }
+                else {
+                    toggleBtn.innerHTML = 'x';
+                }
             });
             
             // 移动端设置变化时同步到桌面端
@@ -836,17 +843,17 @@
                     availableModels = data.data || [];
                     
                     populateModelSelects();
-                    updateStatus(model1Status, 'idle', '准备就绪');
-                    updateStatus(model2Status, 'idle', '准备就绪');
+                    updateStatus(model1Status, 'idle', 'Ready');
+                    updateStatus(model2Status, 'idle', 'Ready');
                     
                 } catch (error) {
                     console.error('加载模型列表错误:', error);
-                    updateStatus(model1Status, 'error', '加载失败');
-                    updateStatus(model2Status, 'error', '加载失败');
+                    updateStatus(model1Status, 'error', 'Failed');
+                    updateStatus(model2Status, 'error', 'Failed');
                     alert('加载模型列表失败: ' + error.message);
                     
-                    mobileModel1.innerHTML = '<option value="">加载失败</option>';
-                    mobileModel2.innerHTML = '<option value="">加载失败</option>';
+                    mobileModel1.innerHTML = '<option value="">Load failed</option>';
+                    mobileModel2.innerHTML = '<option value="">Load failed</option>';
                 } finally {
                     updateUIState();
                 }
@@ -858,8 +865,8 @@
                 mobileModel2.innerHTML = '';
                 
                 if (availableModels.length === 0) {
-                    mobileModel1.innerHTML = '<option value="">无可用模型m</option>';
-                    mobileModel2.innerHTML = '<option value="">无可用模型m</option>';
+                    mobileModel1.innerHTML = '<option value="">No Models</option>';
+                    mobileModel2.innerHTML = '<option value="">No Models</option>';
                     return;
                 }
                 
@@ -909,10 +916,7 @@
                         indicator.classList.add('status-thinking');
                         element.innerHTML = `
                             <span class="status-indicator status-thinking"></span> 
-                            <span class="loading">思考中<span class="loading-dots">
-                                <span class="loading-dot">.</span>
-                                <span class="loading-dot">.</span>
-                                <span class="loading-dot">.</span>
+                            <span class="loading">...<span class="loading-dots">
                             </span></span>
                         `;
                         break;
@@ -929,8 +933,8 @@
             
             // 更新模型名称显示
             function updateModelNames() {
-                model1Name.textContent = model1Select.value ? getModelDisplayName(model1Select.value) : '未选择模型';
-                model2Name.textContent = model2Select.value ? getModelDisplayName(model2Select.value) : '未选择模型';
+                model1Name.textContent = model1Select.value ? getModelDisplayName(model1Select.value) : 'No models';
+                model2Name.textContent = model2Select.value ? getModelDisplayName(model2Select.value) : 'No models';
             }
             
             function getModelDisplayName(modelId) {
@@ -1095,8 +1099,8 @@
                         }
                     }
                     
-                    updateStatus(model1Status, 'success', '响应完成');
-                    updateStatus(model2Status, 'success', '响应完成');
+                    updateStatus(model1Status, 'success', 'Done');
+                    updateStatus(model2Status, 'success', 'Done');
                     
                 } catch (error) {
                     console.error('Error:', error);
