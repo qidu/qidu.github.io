@@ -30,7 +30,7 @@ title = 'From Function Calling to MCP, to A2A'
 ![Function Calling](https://cdn.openai.com/API/docs/images/function-calling-diagram-steps.png)
 
 [MCP Introduction](https://modelcontextprotocol.io/introduction)
-![MCP](https://github.com/modelcontextprotocol/.github/blob/main/profile/assets/light.png)
+![MCP](https://github.com/modelcontextprotocol/.github/blob/main/profile/assets/light.png?raw=true)
 > Define Tools ( MCP Servers) just once, Calling it anywhere by any users selected LLMs repeatly:
 > - MCP Hosts: Programs like Claude Desktop, IDEs, or AI tools that want to access data through MCP tools.
 > - MCP Clients: Protocol clients that maintain 1:1 connections with servers to retrive each tool context.
