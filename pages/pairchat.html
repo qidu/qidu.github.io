@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>多模型聊天对话</title>
     <!-- link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css" -->
-    <link rel="stylesheet" href="/pages/css/github-markdown-5.1.0.min.css">
+    <link rel="stylesheet" href="./css/github-markdown-5.1.0.min.css">
     <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" -->
-    <link rel="stylesheet" href="/pages/css/font-awesome-6.4.0-all.min.css">
+    <link rel="stylesheet" href="./css/font-awesome-6.4.0-all.min.css">
     <style>
         :root {
             --primary-color: #10a37f;
@@ -661,8 +661,8 @@
     <!-- 引入Marked.js用于Markdown渲染 -->
     <!-- script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/marked.min.js"></script -->
     <!-- script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js"></script -->
-    <script src="/pages/js/marked-4.0.0-min.js"></script>
-    <script src="/pages/js/dompurify-2.3.3-purify.min.js"></script>
+    <script src="./js/marked-4.0.0-min.js"></script>
+    <script src="./js/dompurify-2.3.3-purify.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const model1Messages = document.getElementById('model1-messages');
@@ -746,6 +746,8 @@
                 else {
                     toggleBtn.innerHTML = 'x';
                 }
+
+                updateUIState();
             });
             
             // 移动端设置变化时同步到桌面端
@@ -813,8 +815,8 @@
                     populateModelSelects();
                     loadCookies();
 
-                    updateStatus(model1Status, 'idle', 'Ready');
-                    updateStatus(model2Status, 'idle', 'Ready');
+                    updateStatus(model1Status, 'idle', 'ready');
+                    updateStatus(model2Status, 'idle', 'ready');
                     
                 } catch (error) {
                     console.error('加载模型列表错误:', error);
@@ -885,8 +887,11 @@
                     case 'thinking':
                         indicator.classList.add('status-thinking');
                         element.innerHTML = `
-                            <span class="status-indicator status-thinking"></span> 
-                            <span class="loading">...<span class="loading-dots">
+                            <span class="status-indicator status-thinking"></span> ${text}
+                            <span class="loading"><span class="loading-dots">
+                                <!-- span class="loading-dots">.</span>
+                                <span class="loading-dots">.</span>
+                                <span class="loading-dots">.</span -->
                             </span></span>
                         `;
                         break;
@@ -923,6 +928,21 @@
                 mobileModel2.disabled = !hasModels;
                 userInput.disabled = !(hasApiKey && hasSelectedModels);
                 sendButton.disabled = !(hasApiKey && hasSelectedModels);
+
+                if (mobileModel1.value !== '' && hasApiKey) {
+                    updateStatus(model1Status, 'success', 'ready');
+                }
+                else
+                {
+                    updateStatus(model1Status, 'idle', 'unready');
+                }
+                if (mobileModel2.value !== '' && hasApiKey) {
+                    updateStatus(model2Status, 'success', 'ready');
+                }
+                else
+                {
+                    updateStatus(model2Status, 'idle', 'unready');
+                }
                 
                 updateModelNames();
             }
@@ -1045,8 +1065,8 @@
                 userInput.style.height = 'auto';
                 
                 // 显示加载状态
-                updateStatus(model1Status, 'thinking');
-                updateStatus(model2Status, 'thinking');
+                updateStatus(model1Status, 'thinking', 'waiting');
+                updateStatus(model2Status, 'thinking', 'waiting');
                 
                 try {
                     // 同时向两个模型发送请求
@@ -1104,12 +1124,12 @@
                     
                 } catch (error) {
                     console.error('Error:', error);
-                    updateStatus(model1Status, 'error', '请求失败');
-                    updateStatus(model2Status, 'error', '请求失败');
+                    updateStatus(model1Status, 'error', 'Failed');
+                    updateStatus(model2Status, 'error', 'Failed');
                     alert('发生错误: ' + error.message);
                 } finally {
                     // 恢复UI状态
-                    updateUIState();
+                    // updateUIState();
                     userInput.focus();
                 }
             }
@@ -1117,9 +1137,9 @@
             async function chatWithModel(baseUrl, apiKey, model, messages) {
                 try {
                     if (model === model1Select.value) {
-                        updateStatus(model1Status, 'thinking');
+                        updateStatus(model1Status, 'thinking', 'waiting');
                     } else {
-                        updateStatus(model2Status, 'thinking');
+                        updateStatus(model2Status, 'thinking', 'waiting');
                     }
                     
                     const response = await fetch(`${baseUrl}/chat/completions`, {
@@ -1211,7 +1231,7 @@
                             saveConversations();
                         }
 
-                        updateStatus(model === model1Select.value ? model1Status : model2Status, 'success', 'Done');
+                        updateStatus(model === model1Select.value ? model1Status : model2Status, 'success', 'done');
                         
                         // console.log(`Model ${model} responded in ${elapsedTime} seconds`);
                         processedModels.add(model);
@@ -1254,9 +1274,9 @@
                 const startTime = Date.now();
                 try {
                     if (model === model1Select.value) {
-                        updateStatus(model1Status, 'Thinking');
+                        updateStatus(model1Status, 'thinking', 'waiting');
                     } else {
-                        updateStatus(model2Status, 'Thinking');
+                        updateStatus(model2Status, 'thinking', 'waiting');
                     }
 
                     const response = await fetch(`${baseUrl}/chat/completions`, {
