@@ -54,3 +54,5 @@ Software is expensive because developers are expensive. They are skilled transla
 - [The End of Software](https://docs.google.com/document/d/103cGe8qixC7ZzFsRu5Ww2VEW5YgH9zQaiaqbBsZ1lcc/edit?tab=t.0)
 - [The Dawn of Infinite Code](https://docs.google.com/document/u/0/d/1Dm9UrhgaRMu_DjOz5KluO7ibOsPaUVQgwnC5-ccw9_g/mobilebasic?pli=1)
 - [Top Apps in OpenRouter](https://openrouter.ai/) (pagedown to `Top Apps`)
+- [OpenAI to acquire AI coding tool Windsurf](https://www.computerworld.com/article/3978426/openai-to-acquire-ai-coding-tool-windsurf-for-3b.html)
+- [Windsurf says Anthropic is limiting its direct access](https://techcrunch.com/2025/06/03/windsurf-says-anthropic-is-limiting-its-direct-access-to-claude-ai-models/)

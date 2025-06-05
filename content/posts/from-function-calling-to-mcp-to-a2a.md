@@ -4,7 +4,8 @@ draft = false
 title = 'From Function Calling to MCP, to A2A'
 +++
 
-![Agentic Application uses A2A to communicate, uses MCP for tools calling](https://google.github.io/A2A/assets/a2a-mcp.png "A2A and MCP")
+![Agentic Application uses A2A to communicate, uses MCP for tools calling](https://google-a2a.github.io/A2A/assets/a2a-mcp-readme.png
+ "A2A and MCP")
 > [A2A and MCP](https://google.github.io/A2A/topics/a2a-and-mcp)
 > * An A2A Server (a remote agent) could also expose some of its skills as MCP-compatible resources, especially if those skills are well-defined and can be invoked in a more tool-like.
 > * Other agent might "discover" this A2A agent's specific skill via an MCP-style tool description (from its Agent Card).
