@@ -4,8 +4,6 @@ draft = false
 title = 'Are the Softwares Ending by Agents?'
 +++
 
-# Are the Softwares Ending by Agents?
-
 Will we experience a `Cambrian explosion` of software, the same way we did with content?
 
 ## Storyline
