@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Abstract of an AI Agent Age</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Jun 2025 15:18:51 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Jun 2025 14:12:51 +0800</lastBuildDate>
     <atom:link href="https://qidu.github.io/public/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A2a Is Hosted by Linux Foundation</title>
+      <link>https://qidu.github.io/public/posts/a2a-is-hosted-by-linux-foundation/</link>
+      <pubDate>Tue, 24 Jun 2025 14:12:51 +0800</pubDate>
+      <guid>https://qidu.github.io/public/posts/a2a-is-hosted-by-linux-foundation/</guid>
+      <description>&lt;p&gt;The A2A(Agent2Agent) protocol addresses the growing need for agents to operate in dynamic, multi-agent environments, coordinating actions across a wide array of applications and data infrastructure. A2A enables autonomous agents to discover one another, exchange information securely and collaborate across systems. This allows developers and organizations to unite agents from multiple sources and platforms, improving modularity, mitigating vendor lock-in and accelerating innovation.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The protocol enables agentic AI interoperability and trusted agent communication across systems and platforms.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Just Look at What AI Can Do</title>
       <link>https://qidu.github.io/public/posts/just-look-at-what-ai-can-do/</link>

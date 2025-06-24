@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://qidu.github.io/public/</loc>
-    <lastmod>2025-06-09T15:18:51+08:00</lastmod>
+    <loc>https://qidu.github.io/public/posts/a2a-is-hosted-by-linux-foundation/</loc>
+    <lastmod>2025-06-24T14:12:51+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/just-look-at-what-ai-can-do/</loc>
-    <lastmod>2025-06-09T15:18:51+08:00</lastmod>
+    <loc>https://qidu.github.io/public/</loc>
+    <lastmod>2025-06-24T14:12:51+08:00</lastmod>
   </url><url>
     <loc>https://qidu.github.io/public/posts/</loc>
+    <lastmod>2025-06-24T14:12:51+08:00</lastmod>
+  </url><url>
+    <loc>https://qidu.github.io/public/posts/just-look-at-what-ai-can-do/</loc>
     <lastmod>2025-06-09T15:18:51+08:00</lastmod>
   </url><url>
     <loc>https://qidu.github.io/public/posts/the-softwares-are-ending-by-agents/</loc>
