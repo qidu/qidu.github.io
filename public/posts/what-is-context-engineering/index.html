@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>What Is Context Engineering | Abstract of an AI Agent Age</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="What is the Context?
+
+Instructions / System Prompt: An initial set of instructions that define the behavior of the model during a conversation, can/should include examples, rules ….
+User Prompt: Immediate task or question from the user.
+State / History (short-term Memory): The current conversation, including user and model responses that have led to this moment.
+Long-Term Memory: Persistent knowledge base, gathered across many prior conversations, containing learned user preferences, summaries of past projects, or facts it has been told to remember for future use.
+Retrieved Information (RAG): External, up-to-date knowledge, relevant information from documents, databases, or APIs to answer specific questions.
+Available Tools: Definitions of all the functions or built-in tools it can call (e.g., check_inventory, send_email).
+Structured Output: Definitions on the format of the model&rsquo;s response, e.g. a JSON object.
+
+Why context engineering matters for agent?">
+    <meta name="generator" content="Hugo 0.147.3">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/public/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://qidu.github.io/public/posts/what-is-context-engineering/">
+    
+
+    <meta property="og:url" content="https://qidu.github.io/public/posts/what-is-context-engineering/">
+  <meta property="og:site_name" content="Abstract of an AI Agent Age">
+  <meta property="og:title" content="What Is Context Engineering">
+  <meta property="og:description" content="What is the Context?
+Instructions / System Prompt: An initial set of instructions that define the behavior of the model during a conversation, can/should include examples, rules …. User Prompt: Immediate task or question from the user. State / History (short-term Memory): The current conversation, including user and model responses that have led to this moment. Long-Term Memory: Persistent knowledge base, gathered across many prior conversations, containing learned user preferences, summaries of past projects, or facts it has been told to remember for future use. Retrieved Information (RAG): External, up-to-date knowledge, relevant information from documents, databases, or APIs to answer specific questions. Available Tools: Definitions of all the functions or built-in tools it can call (e.g., check_inventory, send_email). Structured Output: Definitions on the format of the model’s response, e.g. a JSON object. Why context engineering matters for agent?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-15T14:23:41+08:00">
+    <meta property="article:modified_time" content="2025-07-15T14:23:41+08:00">
+
+  <meta itemprop="name" content="What Is Context Engineering">
+  <meta itemprop="description" content="What is the Context?
+Instructions / System Prompt: An initial set of instructions that define the behavior of the model during a conversation, can/should include examples, rules …. User Prompt: Immediate task or question from the user. State / History (short-term Memory): The current conversation, including user and model responses that have led to this moment. Long-Term Memory: Persistent knowledge base, gathered across many prior conversations, containing learned user preferences, summaries of past projects, or facts it has been told to remember for future use. Retrieved Information (RAG): External, up-to-date knowledge, relevant information from documents, databases, or APIs to answer specific questions. Available Tools: Definitions of all the functions or built-in tools it can call (e.g., check_inventory, send_email). Structured Output: Definitions on the format of the model’s response, e.g. a JSON object. Why context engineering matters for agent?">
+  <meta itemprop="datePublished" content="2025-07-15T14:23:41+08:00">
+  <meta itemprop="dateModified" content="2025-07-15T14:23:41+08:00">
+  <meta itemprop="wordCount" content="209">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What Is Context Engineering">
+  <meta name="twitter:description" content="What is the Context?
+Instructions / System Prompt: An initial set of instructions that define the behavior of the model during a conversation, can/should include examples, rules …. User Prompt: Immediate task or question from the user. State / History (short-term Memory): The current conversation, including user and model responses that have led to this moment. Long-Term Memory: Persistent knowledge base, gathered across many prior conversations, containing learned user preferences, summaries of past projects, or facts it has been told to remember for future use. Retrieved Information (RAG): External, up-to-date knowledge, relevant information from documents, databases, or APIs to answer specific questions. Available Tools: Definitions of all the functions or built-in tools it can call (e.g., check_inventory, send_email). Structured Output: Definitions on the format of the model’s response, e.g. a JSON object. Why context engineering matters for agent?">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/public/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Abstract of an AI Agent Age
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">What Is Context Engineering</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-07-15T14:23:41+08:00">July 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>What is the Context?</p>
+<ul>
+<li><code>Instructions</code> / <code>System Prompt</code>: An initial set of instructions that define the behavior of the model during a conversation, can/should include examples, rules ….</li>
+<li><code>User Prompt</code>: Immediate task or question from the user.</li>
+<li><code>State / History</code> (short-term Memory): The current conversation, including user and model responses that have led to this moment.</li>
+<li><code>Long-Term Memory</code>: Persistent knowledge base, gathered across many prior conversations, containing learned user preferences, summaries of past projects, or facts it has been told to remember for future use.</li>
+<li><code>Retrieved Information (RAG)</code>: External, up-to-date knowledge, relevant information from documents, databases, or APIs to answer specific questions.</li>
+<li><code>Available Tools</code>: Definitions of all the functions or built-in tools it can call (e.g., check_inventory, send_email).
+Structured Output: Definitions on the format of the model&rsquo;s response, e.g. a JSON object.</li>
+</ul>
+<p>Why context engineering matters for agent?</p>
+<blockquote>
+<p>Agents need context to perform tasks. Context engineering is the art and science of filling the context window with just the right information at each step of an agent’s trajectory.</p></blockquote>
+<ul>
+<li>Instructions – prompts, memories, few‑shot examples, tool descriptions, etc</li>
+<li>Knowledge – facts, memories, etc</li>
+<li>Tools – feedback from tool calls</li>
+</ul>
+<p>Refer to following articles for more:</p>
+<ul>
+<li><a href="https://www.philschmid.de/context-engineering">The New Skill in AI is Not Prompting, It&rsquo;s Context Engineering</a></li>
+<li><a href="https://rlancemartin.github.io/2025/06/23/context_engineering/">Context Engineering for Agents</a></li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://qidu.github.io/public/" >
+    &copy;  Abstract of an AI Agent Age 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
