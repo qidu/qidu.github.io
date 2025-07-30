@@ -2,44 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://qidu.github.io/public/</loc>
+    <loc>http://localhost:1313/public/</loc>
+    <lastmod>2025-07-30T10:50:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/public/posts/forget-her-and-remember-memento-of-nolan-movie/</loc>
+    <lastmod>2025-07-30T10:50:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/public/posts/</loc>
+    <lastmod>2025-07-30T10:50:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/public/posts/what-is-context-engineering/</loc>
     <lastmod>2025-07-15T14:23:41+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/</loc>
-    <lastmod>2025-07-15T14:23:41+08:00</lastmod>
-  </url><url>
-    <loc>https://qidu.github.io/public/posts/what-is-context-engineering/</loc>
-    <lastmod>2025-07-15T14:23:41+08:00</lastmod>
-  </url><url>
-    <loc>https://qidu.github.io/public/posts/a2a-is-hosted-by-linux-foundation/</loc>
+    <loc>http://localhost:1313/public/posts/a2a-is-hosted-by-linux-foundation/</loc>
     <lastmod>2025-06-24T14:12:51+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/just-look-at-what-ai-can-do/</loc>
+    <loc>http://localhost:1313/public/posts/just-look-at-what-ai-can-do/</loc>
     <lastmod>2025-06-09T15:18:51+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/the-softwares-are-ending-by-agents/</loc>
+    <loc>http://localhost:1313/public/posts/the-softwares-are-ending-by-agents/</loc>
     <lastmod>2025-06-05T16:49:48+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/what-is-an-agent/</loc>
+    <loc>http://localhost:1313/public/posts/what-is-an-agent/</loc>
     <lastmod>2025-05-27T22:44:03+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/from-function-calling-to-mcp-to-a2a/</loc>
+    <loc>http://localhost:1313/public/posts/from-function-calling-to-mcp-to-a2a/</loc>
     <lastmod>2025-05-23T12:10:44+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/an-agent-development-kit/</loc>
+    <loc>http://localhost:1313/public/posts/an-agent-development-kit/</loc>
     <lastmod>2025-05-22T14:52:35+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/moa-mixture-of-agents/</loc>
+    <loc>http://localhost:1313/public/posts/moa-mixture-of-agents/</loc>
     <lastmod>2025-05-14T19:34:20+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/the-agent-war-competition-with-different-methodology/</loc>
+    <loc>http://localhost:1313/public/posts/the-agent-war-competition-with-different-methodology/</loc>
     <lastmod>2025-05-14T10:48:52+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/posts/the-starting-point-for-the-agent/</loc>
+    <loc>http://localhost:1313/public/posts/the-starting-point-for-the-agent/</loc>
     <lastmod>2025-05-13T19:16:50+08:00</lastmod>
   </url><url>
-    <loc>https://qidu.github.io/public/categories/</loc>
+    <loc>http://localhost:1313/public/categories/</loc>
   </url><url>
-    <loc>https://qidu.github.io/public/tags/</loc>
+    <loc>http://localhost:1313/public/tags/</loc>
   </url>
 </urlset>
