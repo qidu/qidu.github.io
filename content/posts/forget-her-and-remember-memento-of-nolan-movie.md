@@ -45,6 +45,6 @@ The agent system needs to have a mechanism to compare the gap between the result
 
 Refer more from:
 
-[Forget "Her", Nolan's old movie "Memento" is a compulsory course for LLM Agents](https://mp.weixin.qq.com/s/0D6fd1etd_nkiDTkRdTnmw)
+[Forget "Her", Nolan's old movie "Memento" is a compulsory course for LLM Agents](https://mp.weixin.qq.com/s/0D6fd1etd_nkiDTkRdTnmw) (Note: It is an article co-writed with AI chatbot.)
 
 
