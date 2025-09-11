@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/public/</loc>
-    <lastmod>2025-07-30T10:50:26+08:00</lastmod>
+    <lastmod>2025-09-11T17:38:12+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/public/posts/forget-her-and-remember-memento-of-nolan-movie/</loc>
-    <lastmod>2025-07-30T10:50:26+08:00</lastmod>
+    <loc>http://localhost:1313/public/posts/nondeterminism-hallucinate-and-context-rot-of-llm/</loc>
+    <lastmod>2025-09-11T17:38:12+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/public/posts/</loc>
+    <lastmod>2025-09-11T17:38:12+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/public/posts/forget-her-and-remember-memento-of-nolan-movie/</loc>
     <lastmod>2025-07-30T10:50:26+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/public/posts/what-is-context-engineering/</loc>
